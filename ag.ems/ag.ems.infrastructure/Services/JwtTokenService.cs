@@ -66,12 +66,12 @@ namespace ag.ems.infrastructure.Services
             claims.Add(new Claim(ClaimTypes.NameIdentifier, userId));
             claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
             claims.Add(new Claim(ClaimTypes.Email, email));
-            claims.Add(new Claim(JwtRegisteredClaimNames.Nbf,
-                DateTime.UtcNow.AddMonths(10).ToUniversalTime().ToString()));
-            claims.Add(new Claim(
-                JwtRegisteredClaimNames.Exp,
-                DateTime.UtcNow.AddMonths(10).ToUniversalTime().ToString()
-            ));
+            // claims.Add(new Claim(JwtRegisteredClaimNames.Nbf,
+            //     DateTime.UtcNow.ToUniversalTime().ToString()));
+            // claims.Add(new Claim(
+            //     JwtRegisteredClaimNames.Exp,
+            //     DateTime.UtcNow.AddMonths(10).ToUniversalTime().ToString()
+            // ));
 
             return claims;
         }
@@ -86,12 +86,11 @@ namespace ag.ems.infrastructure.Services
             var signingCredentials = new SigningCredentials(key, algorithm);
 
             var token = new JwtSecurityToken(
-                _applicationConfig.Issuer,
-                _applicationConfig.Audience,
+                "http://localhost:4200/",
+                "http://localhost:4200/",
                 claims,
-                null,
-                null,
-                signingCredentials
+                expires: DateTime.Now.AddMinutes(1),
+                signingCredentials: signingCredentials
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);

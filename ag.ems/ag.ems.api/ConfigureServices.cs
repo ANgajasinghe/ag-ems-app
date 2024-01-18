@@ -39,7 +39,6 @@ public static class ConfigureServices
             ValidateIssuer = false,
             ValidateAudience = false,
             ValidateLifetime = true,
-            RequireExpirationTime = false,
             ClockSkew = TimeSpan.Zero
         };
 

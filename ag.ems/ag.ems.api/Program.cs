@@ -73,11 +73,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors("Open");
-app.UseHttpsRedirection();
 
+
+app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
-app.UseAuthorization();
+
+app.UseCors("Open");
+
 app.MapControllers();
 
 app.Run();
