@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="d-flex justify-content-end mt-3 mb-3">
+    <button mat-raised-button color="primary" (click)="openDialog()">Add Salary</button>
+  </div>
+  <div class="row" *ngIf="!isEmployee else employee">
+    <div class="col-md-12">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="fullName">
+          <th mat-header-cell *matHeaderCellDef> Full Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef> Year</th>
+          <td mat-cell *matCellDef="let element"> {{element.year}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="month">
+          <th mat-header-cell *matHeaderCellDef> Month</th>
+          <td mat-cell *matCellDef="let element"> {{element.month}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef> Amount</th>
+          <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="action">
+          <th *matHeaderCellDef mat-header-cell>Action</th>
+          <td *matCellDef="let element" mat-cell>
+            <button mat-icon-button color="primary">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button color="primary">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+
+  <ng-template #employee>
+
+  </ng-template>
+</div>

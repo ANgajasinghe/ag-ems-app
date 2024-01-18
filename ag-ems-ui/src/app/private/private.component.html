@@ -1,0 +1,27 @@
+<mat-drawer-container autosize >
+  <mat-drawer mode="side" opened style="width: 150px">
+
+    <div class="d-flex justify-content-center mt-3">
+      <button mat-fab color="primary" aria-label="Example icon button with a heart icon" (click)="onProfileClick()">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </div>
+
+    <mat-nav-list class="mt-3">
+      <mat-list-item role="listitem" routerLinkActive="active" routerLink="./employee">
+        Employees
+      </mat-list-item>
+
+      <mat-list-item role="listitem" routerLinkActive="active" routerLink="./salary">
+        Salary
+      </mat-list-item>
+
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+
+</mat-drawer-container>
+
+
